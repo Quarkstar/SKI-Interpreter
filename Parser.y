@@ -9,23 +9,21 @@ import Lexer
 %error {parseError}
 
 %token
-  S    { S }
-  K    { K }
-  I    { I }
+  s    {TS}
+  k    {TK}
+  i    {TI}
   var  { VAR $$ }
   term { TERM $$ }
 
-%left add sub
-%left mul div
-
+%nonassoc s k i
+%nonassoc APP
 %%
 
-Term :
-  const         { EConst $1 }
-  | Exp add Exp { EAdd $1 $3 }
-  | Exp sub Exp { ESub $1 $3 }
-  | Exp mul Exp { EMul $1 $3 }
-  | Exp div Exp { EDiv $1 $3 }
+Term:
+  s          { S }
+  | k        { K }
+  | i        { I }
+  | Term Term %prec APP {TApp $1 $2}
 
 {
 parseError :: [Token] -> a

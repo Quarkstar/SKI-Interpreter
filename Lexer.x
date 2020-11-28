@@ -12,10 +12,10 @@ $upper=[A-Z]
 
 -- Rules
 rule :-
-  $white+   ;
-  S         { \s -> S }
-  K         { \s -> K }
-  I         { \s -> I }
+  $white+    ;
+  S          { \s -> TS }
+  K          { \s -> TK }
+  I          { \s -> TI }
   --$lower   { \s ->  VAR s}
   --$upper   { \s -> TERM s}
 
@@ -25,9 +25,9 @@ rule :-
 data Token =
   VAR String
   | TERM String
-  | S
-  | K
-  | I
+  | TS
+  | TK
+  | TI
   deriving(Eq,Show)
 
 scanTokens = alexScanTokens
