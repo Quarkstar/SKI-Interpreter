@@ -12,4 +12,4 @@ Main : Lexer.hs Parser.hs Ast.hs Main.hs
 	ghc --make Main.hs
 
 clean :
-	rm -rf *.o *.hi Main
+	rm -rf *.o *.hi Parser.hs Lexer.hs Main
