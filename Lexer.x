@@ -11,7 +11,9 @@ rule :-
   S          { \s -> TS }
   K          { \s -> TK }
   I          { \s -> TI }
-  $lower   { \s ->  VAR s}
+  [\(]       { \s -> LP }
+  [\)]       { \s -> RP }
+  $lower     { \s ->  VAR s }
 
 {
 data Token =
@@ -19,6 +21,8 @@ data Token =
   | TS
   | TK
   | TI
+  | LP
+  | RP
   deriving(Eq,Show)
 
 scanTokens = alexScanTokens

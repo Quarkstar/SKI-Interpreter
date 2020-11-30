@@ -13,6 +13,7 @@ stringOfTerm t = case t of
 
 eval :: Term -> Term
 eval t = case t of
+  Grp t   -> eval t
   App I x -> x
   App (App K x) _ -> x
   App (App (App S x) y) z -> App (App x z) (App y z)
@@ -28,4 +29,5 @@ main :: IO ()
 main = do
   s <- getContents
   let ast = parse (scanTokens s)
+  print ast
   print (stringOfTerm (eval ast))

@@ -6,4 +6,5 @@ data Term
   | I
   | Var String
   | App Term Term
+  | Grp Term
   deriving (Show, Eq)
