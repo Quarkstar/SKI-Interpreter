@@ -4,5 +4,6 @@ data Term
   = S
   | K
   | I
-  | TApp Term Term
+  | Var String
+  | App Term Term
   deriving (Show, Eq)

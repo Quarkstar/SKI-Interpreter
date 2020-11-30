@@ -1,9 +1,3 @@
-# Computer
-1st
-1st
-Fundamentos
-de
-Interpretador
-SKI
+# SKI Interpreter
 
 This project is licensed under the mit License - see the [LICENSE](LICENSE) file for details

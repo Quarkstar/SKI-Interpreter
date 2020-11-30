@@ -6,24 +6,25 @@ import Lexer
 
 %name parse
 %tokentype { Token }
-%error {parseError}
+%error { parseError }
 
 %token
-  s    {TS}
-  k    {TK}
-  i    {TI}
+  s    { TS }
+  k    { TK }
+  i    { TI }
   var  { VAR $$ }
-  term { TERM $$ }
 
-%nonassoc s k i
+%nonassoc s k i var
 %nonassoc APP
+
 %%
 
 Term:
-  s          { S }
-  | k        { K }
-  | i        { I }
-  | Term Term %prec APP {TApp $1 $2}
+  s                     { S }
+  | k                   { K }
+  | i                   { I }
+  | var                 { Var $1 }
+  | Term Term %prec APP { App $1 $2 }
 
 {
 parseError :: [Token] -> a
